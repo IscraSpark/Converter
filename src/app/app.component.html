@@ -8,20 +8,32 @@
     <div class="up-container">
         <mat-form-field class="select-money-type" appearance="fill">
             <mat-label>from</mat-label>
-            <mat-select [(ngModel)]="from" name="from">
-                <mat-option *ngFor="let select of selectList" [value]="select">
-                {{select}}
-                </mat-option>
-            </mat-select>
+            <input 
+                type="text"
+                matInput
+                [(ngModel)]="from"
+                [matAutocomplete]="auto"
+            >
+            <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of selectList" [value]="option">
+                {{option}}
+            </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
 
         <mat-form-field class="select-money-type" appearance="fill">
             <mat-label>to</mat-label>
-            <mat-select [(ngModel)]="to" name="to">
-                <mat-option *ngFor="let select of selectList" [value]="select">
-                {{select}}
-                </mat-option>
-            </mat-select>
+            <input 
+                type="text"
+                matInput
+                [(ngModel)]="to"
+                [matAutocomplete]="auto"
+            >
+            <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of selectList" [value]="option">
+                {{option}}
+            </mat-option>
+            </mat-autocomplete>
         </mat-form-field>
 
         <button class="convert-button" mat-raised-button color="primary" (click)="convert()">Convert</button>
