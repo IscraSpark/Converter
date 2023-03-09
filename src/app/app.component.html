@@ -1,0 +1,40 @@
+<div class="header">
+    <div class="content">
+        <span class="rate">USD: {{ moneyData['UAH_USD']?.rateBuy ?? 'error' }} </span>
+        <span class="rate">EUR: {{ moneyData['UAH_EUR']?.rateBuy ?? 'error' }} </span>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="up-container">
+        <mat-form-field class="select-money-type" appearance="fill">
+            <mat-label>from</mat-label>
+            <mat-select [(ngModel)]="from" name="from">
+                <mat-option *ngFor="let select of selectList" [value]="select">
+                {{select}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="select-money-type" appearance="fill">
+            <mat-label>to</mat-label>
+            <mat-select [(ngModel)]="to" name="to">
+                <mat-option *ngFor="let select of selectList" [value]="select">
+                {{select}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button class="convert-button" mat-raised-button color="primary" (click)="convert()">Convert</button>
+    </div>
+    
+    <div class="content-container">
+        <mat-form-field>
+            <mat-label>Converted value</mat-label>
+            <input type="number" matInput [(ngModel)]="converted" [value]="converted">
+        </mat-form-field>
+        <div class="connector">result:</div>
+       <div *ngIf="!error" class="result">{{ result | number : '1.2-2' }}</div>
+       <div *ngIf="error" class="error">Something went wrong</div>
+    </div>
+    
+</div>

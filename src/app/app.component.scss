@@ -1,0 +1,69 @@
+.header {
+    background-color: #3f51b5;
+    height: 56px;
+    padding: 0 60px;
+
+    .content {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .rate {
+            color: #ffffff;
+
+        }
+    }
+}
+
+.rate + .rate {
+    margin-left: 20px;
+}
+
+.wrapper {
+    padding: 20px 60px;
+}
+
+.up-container {
+    display: flex;
+    align-items: center;
+
+    mat-form-field.select-money-type {
+        width: 150px;
+    }
+
+    .select-money-type + .select-money-type {
+        margin-left: 40px;
+        margin-right: 40px; 
+    }
+
+    .convert-button {
+        margin-bottom: 20px;
+    }
+
+}
+
+.content-container {
+    display: flex;
+
+    .result, .error, .connector {
+        margin-left: 20px;
+        height: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .connector {
+
+    }
+
+    .result {
+        width: 150px;
+        background-color: #f5f5f5;
+    }
+
+    .error {
+        width: 200px;
+        color: #f44336;
+    }
+}
