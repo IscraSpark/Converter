@@ -12,9 +12,9 @@
                 type="text"
                 matInput
                 [(ngModel)]="from"
-                [matAutocomplete]="auto"
+                [matAutocomplete]="auto1"
             >
-            <mat-autocomplete #auto="matAutocomplete">
+            <mat-autocomplete #auto1="matAutocomplete">
             <mat-option *ngFor="let option of selectList" [value]="option">
                 {{option}}
             </mat-option>
@@ -27,13 +27,14 @@
                 type="text"
                 matInput
                 [(ngModel)]="to"
-                [matAutocomplete]="auto"
+                [matAutocomplete]="auto2"
             >
-            <mat-autocomplete #auto="matAutocomplete">
+            <mat-autocomplete #auto2="matAutocomplete">
             <mat-option *ngFor="let option of selectList" [value]="option">
                 {{option}}
             </mat-option>
             </mat-autocomplete>
+
         </mat-form-field>
 
         <button class="convert-button" mat-raised-button color="primary" (click)="convert()">Convert</button>
