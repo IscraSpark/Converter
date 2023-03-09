@@ -38,12 +38,10 @@ export class AppComponent implements OnInit {
 
     if (this.from === this.to) this.result = this.converted;
     else if (this.moneyData[this.from + '_' + this.to]) {
-      let temp = this.moneyData[this.to + '_' + this.from];
       this.result = this.converted / this.moneyData[this.from + '_' + this.to].rateBuy;
     }
     else if (this.moneyData[this.to + '_' + this.from]) {
-      let temp = this.moneyData[this.to + '_' + this.from];
-      this.result = this.converted * temp.rateBuy;
+      this.result = this.converted * this.moneyData[this.to + '_' + this.from].rateBuy;
     } else {
       this.error = true;
     }
