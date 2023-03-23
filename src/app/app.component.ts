@@ -10,43 +10,20 @@ import { take } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'converter';
-  from: string = 'USD';
-  to: string = 'UAH';
-  selectList = ['UAH', 'USD', 'EUR'];
-  converted: number = 1;
-  result: number | string = 1;
-  error = false;
-  moneyData: { [value: string]: IConvertor } = {}
+  moneyData: { [value: string]: number } = {}
 
-  constructor (private api: ApiService) {}
+  constructor ( private api: ApiService ) {}
 
   ngOnInit(): void {
-    this.error = true;
-   this.api.getExchangeRate().pipe(take(1)).subscribe(data => {
+    this.api.getExchangeRate().pipe(take(1)).subscribe(data => {
       // 978 - EUR, 980 - UAH, 840 - USD
-      this.moneyData['UAH_USD'] = data.find((item: IConvertor) => item.currencyCodeA == 840 && item.currencyCodeB == 980);
-      this.moneyData['UAH_EUR'] = data.find((item: IConvertor) => item.currencyCodeA == 978 && item.currencyCodeB == 980);
-      this.moneyData['EUR_USD'] = data.find((item: IConvertor) => item.currencyCodeA == 978 && item.currencyCodeB == 840); 
-      this.convert();     
+      data.forEach((item: IConvertor) => {
+        this.moneyData[item.currencyCodeA + '_' + item.currencyCodeB] = item.rateBuy;
+        this.moneyData[item.currencyCodeB + '_' + item.currencyCodeA] = 1 / item.rateBuy;
+      })
     });
     
     
-  }
-
-  convert() {
-    this.error = false;
-
-    if (this.from === this.to) this.result = this.converted;
-    else if (this.moneyData[this.from + '_' + this.to]) {
-      this.result = this.converted / this.moneyData[this.from + '_' + this.to].rateBuy;
-    }
-    else if (this.moneyData[this.to + '_' + this.from]) {
-      this.result = this.converted * this.moneyData[this.to + '_' + this.from].rateBuy;
-    } else {
-      this.error = true;
-    }
-
-
   }
 
 

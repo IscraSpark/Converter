@@ -1,0 +1,44 @@
+.wrapper {
+    padding: 20px 60px;
+}
+
+.up-container {
+    display: flex;
+    align-items: center;
+
+    .convert-button {
+        margin-bottom: 20px;
+    }
+
+}
+
+.content-container {
+    display: flex;
+
+    .result, .error, .connector {
+        margin-left: 20px;
+        height: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .connector {
+
+    }
+
+    .result {
+        width: 150px;
+        background-color: #f5f5f5;
+    }
+
+    .error {
+        width: 200px;
+        color: #f44336;
+    }
+}
+
+.select-money-type + .select-money-type {
+    margin-left: 40px;
+    margin-right: 40px; 
+}

@@ -1,0 +1,15 @@
+<mat-form-field class="select-money-type" appearance="fill">
+    <mat-label>{{label}}</mat-label>
+    <input 
+        type="text"
+        matInput
+        [(ngModel)]="value"
+        (ngModelChange)="onChange($event)"
+        [matAutocomplete]="auto"
+    >
+    <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of selectList" [value]="option">
+        {{option}}
+    </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

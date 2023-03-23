@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <div class="up-container">
+
+        <app-input-select 
+            class="select-money-type"
+            [label]="'from'" 
+            [selectList]="selectList" 
+            [startValue]="'USD'"
+            (selectedEmiter)="selectedChange($event, 'from')"
+        >
+        </app-input-select>
+
+        <app-input-select 
+            class="select-money-type"
+            [label]="'to'" 
+            [selectList]="selectList" 
+            [startValue]="'UAH'"
+            (selectedEmiter)="selectedChange($event, 'to')"
+        >
+        </app-input-select>
+
+        <button class="convert-button" mat-raised-button color="primary" (click)="convert()">Convert</button>
+    </div>
+    
+    <div class="content-container">
+        <mat-form-field>
+            <mat-label>Converted value</mat-label>
+            <input type="number" matInput [(ngModel)]="converted" [value]="converted">
+        </mat-form-field>
+        <div class="connector">result:</div>
+       <div *ngIf="!error" class="result">{{ result | number : '1.2-2' }}</div>
+       <div *ngIf="error" class="error">Something went wrong</div>
+    </div>
+    
+</div>
